@@ -1,0 +1,7 @@
+*.xlsx
+*.png
+*.ipynb
+tempCodeRunnerFile.py
+~$*
+.DS_Store
+__pycache__/
