@@ -1,5 +1,9 @@
 # Grade Dashboard
 
+## Live App
+
+https://betterofffound-grades-dashboard.streamlit.app/
+
 A Streamlit dashboard for analyzing student grades from an uploaded Excel file.
 
 ## Features
