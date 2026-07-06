@@ -54,7 +54,7 @@ duplicate_rows = grades[grades.duplicated(subset="StudentID", keep=False)]
 if not duplicate_rows.empty:
     st.sidebar.warning(f"Found {len(duplicate_rows)} rows with duplicate StudentID values.")
     with st.expander("View duplicate rows"):
-        st.dataframe(duplicate_rows, use_container_width=True)    
+        st.dataframe(duplicate_rows, width="stretch")    
 else:
     st.sidebar.success("No duplicate StudentID records found.")
 
@@ -131,7 +131,7 @@ with charts_tab:
         xaxis_title=None
     )
     chart_col1, chart_col2 = st.columns(2)
-    chart_col1.plotly_chart(fig_students, use_container_width=True)
+    chart_col1.plotly_chart(fig_students, width="stretch")
     average_score_per_subject = filtered_grades.groupby("Subject")["FinalScore"].mean().round(2).reset_index()
     fig_average_score = px.bar(
         average_score_per_subject,
@@ -148,7 +148,7 @@ with charts_tab:
         yaxis_title="Average Final Score",
         xaxis_title=None
     )
-    chart_col2.plotly_chart(fig_average_score, use_container_width=True)
+    chart_col2.plotly_chart(fig_average_score, width="stretch")
     
     st.subheader("Student Outcomes")
     pass_fail_counts = filtered_grades["Result"].value_counts().reset_index()
@@ -170,7 +170,7 @@ with charts_tab:
     )
     chart_col3, chart_col4 = st.columns(2)
 
-    chart_col3.plotly_chart(fig_pass_fail, use_container_width=True)
+    chart_col3.plotly_chart(fig_pass_fail, width="stretch")
 
     risk_level_count = filtered_grades["Risk Level"].value_counts().reset_index()
     fig_risk_level_count = px.bar(
@@ -194,7 +194,7 @@ with charts_tab:
         yaxis_title = "Students",
         xaxis_title = None
     )
-    chart_col4.plotly_chart(fig_risk_level_count, use_container_width=True)
+    chart_col4.plotly_chart(fig_risk_level_count, width="stretch")
 
 
 with table_tab:
@@ -224,7 +224,7 @@ with table_tab:
         )
     )
     #apply styling to chosen subset
-    st.dataframe(styled_table, use_container_width=True)
+    st.dataframe(styled_table, width="stretch")
 
     download_subject = selected_subject.replace(" ", "_").lower()
     csv = filtered_grades[display_columns].to_csv(index=False)
