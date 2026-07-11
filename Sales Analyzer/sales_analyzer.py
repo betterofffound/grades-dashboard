@@ -10,6 +10,8 @@ os.system("clear")  # macOS/Linux
 raw_data_path = Path(__file__).resolve().parent /"small_business_sales_raw_data.xlsx"
 sales = pd.read_excel(raw_data_path)
 sales = sales.dropna(subset=["Order ID"])
+no_of_rows = sales.rows()
+print(no_of_rows)
 
 #Sales Grouping#
 sales["Order Month"] = pd.to_datetime(sales["Order Date"]).dt.to_period("M")
